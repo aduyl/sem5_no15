@@ -6,12 +6,12 @@
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
 
-class Scene : public QWidget, public QGraphicsScene
+class Scene : public QGraphicsScene
 {
 public:
-    Scene(QWidget *parent = nullptr);
+    Scene();
 
-private:
+private slots:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 };
 

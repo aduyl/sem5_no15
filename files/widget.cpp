@@ -13,12 +13,19 @@ Widget::Widget(QWidget *parent)
 
 
     pole = new JumpPole(this);
-    scene = new Scene(this);   // Инициализируем графическую сцену
+    scene = new Scene();   // Инициализируем графическую сцену
     scene->setItemIndexMethod(QGraphicsScene::NoIndex); // настраиваем индексацию элементов
 
 
     ui->graphicsView->resize(1040,940);  // Устанавливаем размер graphicsView
     ui->graphicsView->setScene(scene);  // Устанавливаем графическую сцену в graphicsView
+
+
+    // Включение обрабоки сигналов от мыши для graphicsView
+    ui->graphicsView->setMouseTracking(true);
+
+
+
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);    // Настраиваем рендер
     ui->graphicsView->setCacheMode(QGraphicsView::CacheBackground); // Кэш фона
     ui->graphicsView->setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
@@ -26,7 +33,7 @@ Widget::Widget(QWidget *parent)
 
     pole->boundingRect();
     scene->addItem(pole);
-//    connect(pole, SIGNAL(isMoved()), this, SLOT(slotFromScene()));
+
     connect(pole, &JumpPole::isMoved, this, &Widget::slotFromScene);
 }
 
@@ -35,7 +42,6 @@ Widget::~Widget()
     delete scene;
     delete ui;
 }
-
 
 void Widget::slotFromScene()
 {
@@ -115,7 +121,7 @@ void Widget::on_reButton_clicked()
     scene->removeItem(pole);
     scene->removeItem(item);
     delete scene;
-    scene = new Scene(this);
+    scene = new Scene();
     ui->graphicsView->setScene(scene);
 
     ui->mEdit->clear();
@@ -143,8 +149,6 @@ void Widget::keyReleaseEvent(QKeyEvent *event)
         isEnterPressed = false;
     }
 }
-
-
 
 void Widget::mousePressEvent(QMouseEvent *event)
 {

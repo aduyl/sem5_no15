@@ -46,6 +46,11 @@ public:
     int n = -1;
     int counter = 0;
 
+public slots:
+    void keyPressEvent( QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+
 private slots:
     /* Слот для обработки сигнала из точки */
     void slotFromScene();
@@ -57,11 +62,6 @@ private slots:
     void on_drawButton_clicked();
 
     void on_reButton_clicked();
-public slots:
-    void keyPressEvent( QKeyEvent *event);
-    void keyReleaseEvent(QKeyEvent *event);
-    //void mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent);
-    void mousePressEvent(QMouseEvent *event);
 private:
     Ui::Widget *ui;
     Scene *scene;

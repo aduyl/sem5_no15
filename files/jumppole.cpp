@@ -36,10 +36,10 @@ void JumpPole::reseveWidthAndHeith(int mParametr, int nParametr)
     squareSize = 800 / m;
 }
 
-void JumpPole::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{
-        qDebug() << event->pos();
-}
+//void JumpPole::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+//{
+//        qDebug() << event->pos();
+//}
 
 //void JumpPole::mouseMoveEvent(QMouseEvent *event)
 //{

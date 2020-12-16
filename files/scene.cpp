@@ -1,13 +1,11 @@
 #include "scene.h"
 
-
-Scene::Scene(QWidget *parent)
-    : QWidget(parent)
+Scene::Scene()
 {
-
 }
 
 void Scene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    qDebug() << event->pos();
+    Q_UNUSED(event)
+    qDebug() << "Нажатия клавиш надо обрабатывать в Widget.cpp";
 }
